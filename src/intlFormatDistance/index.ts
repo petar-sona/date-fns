@@ -18,13 +18,20 @@ import differenceInSeconds from '../differenceInSeconds/index'
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
+interface IntlFormatDistanceOptions {
+  unit?: Intl.RelativeTimeFormatUnit
+  locale?: Intl.UnicodeBCP47LocaleIdentifier
+  localeMatcher?: Intl.RelativeTimeFormatLocaleMatcher
+  numeric?: Intl.RelativeTimeFormatNumeric
+  style?: Intl.RelativeTimeFormatStyle
+}
+
 /**
  * @name intlFormatDistance
  * @category Common Helpers
- * @summary Enables language-sensitive relative time formatting according to the locale and formatting options
- * of the given Intl.RelativeTimeFormat object.
+ * @summary Formats distance between two dates in human-readable format
  * @description
- * The API gets a difference between two given dates and either picks the most appropriate unit
+ * The function calculates the difference between two given dates and either picks the most appropriate unit
  * depending on the distance (the less the distance the smaller the unit),
  * or allows a user to pass in a unit as well.
  * If a unit is passed in, it will be applied accordingly. Otherwise - see the table below:
@@ -196,19 +203,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * )
  * //=> 'in 60 Minuten'
  */
-interface IntlFormatDistanceOptions {
-  unit?: Intl.RelativeTimeFormatUnit
-  locale?: Intl.UnicodeBCP47LocaleIdentifier
-  localeMatcher?: Intl.RelativeTimeFormatLocaleMatcher
-  numeric?: Intl.RelativeTimeFormatNumeric
-  style?: Intl.RelativeTimeFormatStyle
-}
 
 export default function intlFormatDistance(
   date: Date | number,
   baseDate: Date | number,
   options?: IntlFormatDistanceOptions
-): String {
+): string {
   requiredArgs(2, arguments)
 
   let value: number = 0

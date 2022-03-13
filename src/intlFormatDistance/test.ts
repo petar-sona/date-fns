@@ -7,7 +7,7 @@ describe('intlFormatDistance', () => {
   const AmericanTZOnly = process.env.TZ === 'America/New_York' ? it : it.skip
 
   describe('default options', () => {
-    it('prints out `now` for the same dates', () => {
+    it('works with the same dates', () => {
       const result = intlFormatDistance(
         new Date(1986, 3, 5, 10, 30, 0),
         new Date(1986, 3, 5, 10, 30, 0)
@@ -15,7 +15,7 @@ describe('intlFormatDistance', () => {
       assert(result === 'now')
     })
 
-    it('prints out `1 second ago`', () => {
+    it('works with seconds in the past', () => {
       const result = intlFormatDistance(
         new Date(1986, 3, 4, 10, 30, 0),
         new Date(1986, 3, 4, 10, 30, 1)
@@ -23,7 +23,7 @@ describe('intlFormatDistance', () => {
       assert(result === '1 second ago')
     })
 
-    it('prints out `in 1 second`', () => {
+    it('works with seconds in the future', () => {
       const result = intlFormatDistance(
         new Date(1986, 3, 4, 10, 30, 1),
         new Date(1986, 3, 4, 10, 30, 0)
@@ -31,7 +31,7 @@ describe('intlFormatDistance', () => {
       assert(result === 'in 1 second')
     })
 
-    it('prints out `1 minute ago`', () => {
+    it('works with minutes in the past', () => {
       const result = intlFormatDistance(
         new Date(1986, 3, 4, 10, 30, 0),
         new Date(1986, 3, 4, 10, 31, 0)
@@ -39,7 +39,7 @@ describe('intlFormatDistance', () => {
       assert(result === '1 minute ago')
     })
 
-    it('prints out `in 1 minute`', () => {
+    it('works with minutes in the future', () => {
       const result = intlFormatDistance(
         new Date(1986, 3, 4, 10, 31, 0),
         new Date(1986, 3, 4, 10, 30, 0)
@@ -47,7 +47,7 @@ describe('intlFormatDistance', () => {
       assert(result === 'in 1 minute')
     })
 
-    it('prints out `1 hour ago`', () => {
+    it('works with hours in the past', () => {
       const result = intlFormatDistance(
         new Date(1986, 3, 4, 10, 30, 0),
         new Date(1986, 3, 4, 11, 30, 0)
@@ -55,7 +55,7 @@ describe('intlFormatDistance', () => {
       assert(result === '1 hour ago')
     })
 
-    it('prints out `in 1 hour`', () => {
+    it('works with hours in the future', () => {
       const result = intlFormatDistance(
         new Date(1986, 3, 4, 11, 30, 0),
         new Date(1986, 3, 4, 10, 30, 0)
@@ -63,7 +63,7 @@ describe('intlFormatDistance', () => {
       assert(result === 'in 1 hour')
     })
 
-    it('prints out `tomorrow`', () => {
+    it('works with day in the future', () => {
       const result = intlFormatDistance(
         new Date(1986, 3, 5, 10, 30, 0),
         new Date(1986, 3, 4, 10, 30, 0)
@@ -71,7 +71,7 @@ describe('intlFormatDistance', () => {
       assert(result === 'tomorrow')
     })
 
-    it('prints out `yesterday`', () => {
+    it('works with day in the past', () => {
       const result = intlFormatDistance(
         new Date(1986, 3, 4, 10, 30, 0),
         new Date(1986, 3, 5, 10, 30, 0)
@@ -79,7 +79,7 @@ describe('intlFormatDistance', () => {
       assert(result === 'yesterday')
     })
 
-    it('prints out `last month`', () => {
+    it('works with month in the past', () => {
       const result = intlFormatDistance(
         new Date(1986, 4, 4, 10, 30, 0),
         new Date(1986, 5, 4, 10, 30, 0)
@@ -87,7 +87,7 @@ describe('intlFormatDistance', () => {
       assert(result === 'last month')
     })
 
-    it('prints out `next month`', () => {
+    it('works with month in the future', () => {
       const result = intlFormatDistance(
         new Date(1986, 5, 4, 10, 30, 0),
         new Date(1986, 4, 4, 10, 30, 0)
@@ -95,7 +95,7 @@ describe('intlFormatDistance', () => {
       assert(result === 'next month')
     })
 
-    it('prints out `last quarter`', () => {
+    it('works with quarter in the past', () => {
       const result = intlFormatDistance(
         new Date(1986, 1, 4, 10, 30, 0),
         new Date(1986, 5, 4, 10, 30, 0)
@@ -103,7 +103,7 @@ describe('intlFormatDistance', () => {
       assert(result === 'last quarter')
     })
 
-    it('prints out `in next quarter`', () => {
+    it('works with quarter in the future', () => {
       const result = intlFormatDistance(
         new Date(1986, 5, 4, 10, 30, 0),
         new Date(1986, 1, 4, 10, 30, 0)
@@ -111,15 +111,7 @@ describe('intlFormatDistance', () => {
       assert(result === 'next quarter')
     })
 
-    it('prints out `in next quarter`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 5, 29, 10, 30, 0),
-        new Date(1986, 1, 4, 10, 30, 0)
-      )
-      assert(result === 'next quarter')
-    })
-
-    it('prints out `2 quarters ago`', () => {
+    it('works with quarters in the past', () => {
       const result = intlFormatDistance(
         new Date(1985, 10, 4, 10, 30, 0),
         new Date(1986, 4, 4, 10, 30, 0)
@@ -127,7 +119,7 @@ describe('intlFormatDistance', () => {
       assert(result === '2 quarters ago')
     })
 
-    it('prints out `in 2 quarters`', () => {
+    it('works with quarters in the future', () => {
       const result = intlFormatDistance(
         new Date(1986, 4, 4, 10, 30, 0),
         new Date(1985, 10, 4, 10, 30, 0)
@@ -135,7 +127,7 @@ describe('intlFormatDistance', () => {
       assert(result === 'in 2 quarters')
     })
 
-    it('prints out `next year`', () => {
+    it('works with year in the future', () => {
       const result = intlFormatDistance(
         new Date(1987, 3, 4, 10, 30, 0),
         new Date(1986, 3, 4, 10, 30, 0)
@@ -143,15 +135,7 @@ describe('intlFormatDistance', () => {
       assert(result === 'next year')
     })
 
-    it('prints out `next year`', () => {
-      const result = intlFormatDistance(
-        new Date(1987, 3, 4, 10, 30, 0),
-        new Date(1986, 3, 11, 10, 30, 0)
-      )
-      assert(result === 'next year')
-    })
-
-    it('prints out `last year`', () => {
+    it('works with year in the past', () => {
       const result = intlFormatDistance(
         new Date(1985, 1, 4, 10, 30, 0),
         new Date(1986, 4, 4, 10, 30, 0)
@@ -159,317 +143,415 @@ describe('intlFormatDistance', () => {
       assert(result === 'last year')
     })
 
-    it('prints out `in 2 years`', () => {
+    it('works with years in the future', () => {
       const result = intlFormatDistance(
         new Date(1988, 3, 4, 10, 30, 0),
         new Date(1986, 3, 4, 10, 30, 0)
       )
       assert(result === 'in 2 years')
     })
-  }) // End of default options
 
-  describe('with options', () => {
-    it('prints out `today`', () => {
-      const result = intlFormatDistance(
-        new Date(1987, 3, 4, 11, 30, 0),
-        new Date(1987, 3, 4, 10, 30, 0),
-        { unit: 'day' }
-      )
-      assert(result === 'today')
-    })
-
-    it('prints out `next month`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 5, 4, 10, 30, 0),
-        new Date(1986, 4, 29, 10, 30, 0),
-        { unit: 'month' }
-      )
-      assert(result === 'next month')
-    })
-
-    it('prints out `in 4 quarters`', () => {
-      const result = intlFormatDistance(
-        new Date(1987, 3, 4, 10, 30, 0),
-        new Date(1986, 3, 4, 10, 30, 0),
-        { unit: 'quarter' }
-      )
-      assert(result === 'in 4 quarters')
-    })
-
-    it('prints out `in 12 months`', () => {
-      const result = intlFormatDistance(
-        new Date(1987, 3, 4, 10, 30, 0),
-        new Date(1986, 3, 4, 10, 30, 0),
-        { unit: 'month' }
-      )
-      assert(result === 'in 12 months')
-    })
-
-    it('prints out `in 52 weeks`', () => {
-      const result = intlFormatDistance(
-        new Date(1987, 3, 4, 10, 30, 0),
-        new Date(1986, 3, 4, 10, 30, 0),
-        { unit: 'week' }
-      )
-      assert(result === 'in 52 weeks')
-    })
-
-    it('prints out `in 365 days`', () => {
-      const result = intlFormatDistance(
-        new Date(1987, 3, 4, 10, 30, 0),
-        new Date(1986, 3, 4, 10, 30, 0),
-        { unit: 'day' }
-      )
-      assert(result === 'in 365 days')
-    })
-
-    it('prints out in `8,760 hours`', () => {
-      const result = intlFormatDistance(
-        new Date(1987, 3, 4, 10, 30, 0),
-        new Date(1986, 3, 4, 10, 30, 0),
-        { unit: 'hour' }
-      )
-      assert(result === 'in 8,760 hours')
-    })
-
-    it('prints out in `525,600 minutes`', () => {
-      const result = intlFormatDistance(
-        new Date(1987, 3, 4, 10, 30, 0),
-        new Date(1986, 3, 4, 10, 30, 0),
-        { unit: 'minute' }
-      )
-      assert(result === 'in 525,600 minutes')
-    })
-
-    it('prints out in `31,536,000 seconds`', () => {
-      const result = intlFormatDistance(
-        new Date(1987, 3, 4, 10, 30, 0),
-        new Date(1986, 3, 4, 10, 30, 0),
-        { unit: 'second' }
-      )
-      assert(result === 'in 31,536,000 seconds')
-    })
-
-    it('prints out `in 1 day`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 3, 5, 10, 30, 0),
-        new Date(1986, 3, 4, 10, 30, 0),
-        { numeric: 'always' }
-      )
-      assert(result === 'in 1 day')
-    })
-
-    it('prints out `1 month ago`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 4, 4, 10, 30, 0),
-        new Date(1986, 5, 4, 10, 30, 0),
-        { numeric: 'always' }
-      )
-      assert(result === '1 month ago')
-    })
-
-    it('prints out `in 1 month`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 5, 4, 10, 30, 0),
-        new Date(1986, 4, 4, 10, 30, 0),
-        { numeric: 'always' }
-      )
-      assert(result === 'in 1 month')
-    })
-
-    it('prints out `last month`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 4, 29, 10, 30, 0),
-        new Date(1986, 5, 4, 10, 30, 0),
-        { unit: 'month' }
-      )
-      assert(result === 'last month')
-    })
-
-    it('prints out `1 quarter ago`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 1, 4, 10, 30, 0),
-        new Date(1986, 5, 4, 10, 30, 0),
-        { numeric: 'always' }
-      )
-      assert(result === '1 quarter ago')
-    })
-
-    it('prints out `in 1 quarter`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 5, 4, 10, 30, 0),
-        new Date(1986, 1, 4, 10, 30, 0),
-        { numeric: 'always' }
-      )
-      assert(result === 'in 1 quarter')
-    })
-
-    it('prints out `1 year ago`', () => {
-      const result = intlFormatDistance(
-        new Date(1985, 1, 4, 10, 30, 0),
-        new Date(1986, 4, 4, 10, 30, 0),
-        { numeric: 'always' }
-      )
-      assert(result === '1 year ago')
-    })
-
-    it('prints out `in 1 year`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 4, 4, 10, 30, 0),
-        new Date(1985, 4, 4, 10, 30, 0),
-        { numeric: 'always' }
-      )
-      assert(result === 'in 1 year')
-    })
-
-    it('prints out `el próximo año`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 4, 4, 10, 30, 0),
-        new Date(1985, 4, 4, 10, 30, 0),
-        { locale: 'es' }
-      )
-      assert(result === 'el próximo año')
-    })
-
-    // falls back to { numeric: always }
-    it('prints `tomorrow`', () => {
-      const result = intlFormatDistance(
-        new Date(1985, 4, 5, 10, 30, 0),
-        new Date(1985, 4, 4, 10, 30, 0),
-        { style: 'short', numeric: 'auto' }
-      )
-      assert(result === 'tomorrow')
-    })
-
-    AmericanTZOnly('prints `next mo`', () => {
-      const result = intlFormatDistance(
-        new Date(1985, 5, 4, 10, 30, 0),
-        new Date(1985, 4, 4, 10, 30, 0),
-        { style: 'short', numeric: 'auto' }
-      )
-      assert(result === 'next mo')
-    })
-
-    AmericanTZOnly('prints `next yr.`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 4, 5, 10, 30, 0),
-        new Date(1985, 4, 5, 10, 30, 0),
-        { style: 'short', numeric: 'auto' }
-      )
-      assert(result === 'next yr')
-    })
-
-    it('prints out `in 0 seconds`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 3, 5, 10, 30, 0),
-        new Date(1986, 3, 5, 10, 30, 0),
-        { numeric: 'always' }
-      )
-      assert(result === 'in 0 seconds')
-    })
-
-    it('prints `in 60 minutes`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 3, 5, 11, 30, 0),
-        new Date(1986, 3, 5, 10, 30, 0),
-        { unit: 'minute' }
-      )
-      assert(result === 'in 60 minutes')
-    })
-
-    it('prints out `jetzt`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 3, 5, 10, 30, 0),
-        new Date(1986, 3, 5, 10, 30, 0),
-        { locale: 'de-DE', localeMatcher: 'lookup' }
-      )
-      assert(result === 'jetzt')
-    })
-
-    it('prints out in `jetzt`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 3, 5, 10, 30, 0),
-        new Date(1986, 3, 5, 10, 30, 0),
-        { locale: 'de-DE', localeMatcher: 'best fit' }
-      )
-      assert(result === 'jetzt')
-    })
-
-    it('prints out `in 0 Sekunden`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 3, 5, 10, 30, 0),
-        new Date(1986, 3, 5, 10, 30, 0),
-        { locale: 'de-DE', numeric: 'always' }
-      )
-      assert(result === 'in 0 Sekunden')
-    })
-
-    it('prints out `jetzt`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 3, 5, 10, 30, 0),
-        new Date(1986, 3, 5, 10, 30, 0),
-        { locale: 'de-DE', numeric: 'auto' }
-      )
-      assert(result === 'jetzt')
-    })
-
-    it('prints out `now`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 3, 5, 10, 30, 0),
-        new Date(1986, 3, 5, 10, 30, 0),
-        { numeric: 'auto' }
-      )
-      assert(result === 'now')
-    })
-
-    it('prints `dentro de 60 minutos`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 3, 5, 11, 30, 0),
-        new Date(1986, 3, 5, 10, 30, 0),
-        { unit: 'minute', locale: 'es' }
-      )
-      assert(result === 'dentro de 60 minutos')
-    })
-
-    it('prints `in 60 Minuten`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 3, 5, 11, 30, 0),
-        new Date(1986, 3, 5, 10, 30, 0),
-        { unit: 'minute', locale: 'de' }
-      )
-      assert(result === 'in 60 Minuten')
-    })
-
-    it('prints out `1 hour ago`', () => {
+    it('works with years in the past', () => {
       const result = intlFormatDistance(
         new Date(1986, 3, 4, 10, 30, 0),
-        new Date(1986, 3, 4, 11, 30, 0),
-        { unit: 'hour' }
+        new Date(1988, 3, 4, 10, 30, 0)
       )
-      assert(result === '1 hour ago')
-    })
-
-    it('prints out `60 minutes ago`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 3, 4, 10, 30, 0),
-        new Date(1986, 3, 4, 11, 30, 0),
-        { unit: 'minute' }
-      )
-      assert(result === '60 minutes ago')
-    })
-
-    it('prints out `in 60 minutes`', () => {
-      const result = intlFormatDistance(
-        new Date(1986, 3, 4, 11, 30, 0),
-        new Date(1986, 3, 4, 10, 30, 0),
-        { unit: 'minute' }
-      )
-      assert(result === 'in 60 minutes')
+      assert(result === '2 years ago')
     })
   })
 
-  describe('edge cases', () => {
-    it('throws Range Error if the date isnt valid', () => {
+  describe('with options', () => {
+    describe('unit', () => {
+      it('works with seconds in future', () => {
+        const result = intlFormatDistance(
+          new Date(1987, 3, 4, 10, 30, 0),
+          new Date(1986, 3, 4, 10, 30, 0),
+          { unit: 'second' }
+        )
+        assert(result === 'in 31,536,000 seconds')
+      })
+
+      it('works with seconds in past', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 4, 10, 30, 0),
+          new Date(1987, 3, 4, 10, 30, 0),
+
+          { unit: 'second' }
+        )
+        assert(result === '31,536,000 seconds ago')
+      })
+
+      it('works with minutes in future', () => {
+        const result = intlFormatDistance(
+          new Date(1987, 3, 4, 10, 30, 0),
+          new Date(1986, 3, 4, 10, 30, 0),
+          { unit: 'minute' }
+        )
+        assert(result === 'in 525,600 minutes')
+      })
+
+      it('works with minutes in the past', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 4, 10, 30, 0),
+          new Date(1986, 3, 4, 11, 30, 0),
+          { unit: 'minute' }
+        )
+        assert(result === '60 minutes ago')
+      })
+
+      it('works with hour in the future', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 4, 11, 30, 0),
+          new Date(1986, 3, 4, 10, 30, 0),
+
+          { unit: 'hour' }
+        )
+        assert(result === 'in 1 hour')
+      })
+
+      it('works with hour in the past', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 4, 10, 30, 0),
+          new Date(1986, 3, 4, 11, 30, 0),
+
+          { unit: 'hour' }
+        )
+        assert(result === '1 hour ago')
+      })
+
+      it('works with hours in future', () => {
+        const result = intlFormatDistance(
+          new Date(1987, 3, 4, 10, 30, 0),
+          new Date(1986, 3, 4, 10, 30, 0),
+          { unit: 'hour' }
+        )
+        assert(result === 'in 8,760 hours')
+      })
+
+      it('works with hours in past', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 4, 10, 30, 0),
+          new Date(1987, 3, 4, 10, 30, 0),
+
+          { unit: 'hour' }
+        )
+        assert(result === '8,760 hours ago')
+      })
+
+      it('works with today', () => {
+        const result = intlFormatDistance(
+          new Date(1987, 3, 4, 11, 30, 0),
+          new Date(1987, 3, 4, 10, 30, 0),
+          { unit: 'day' }
+        )
+        assert(result === 'today')
+      })
+
+      it('works with day in the future', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 5, 10, 30, 0),
+          new Date(1986, 3, 4, 10, 30, 0),
+          { numeric: 'always' }
+        )
+        assert(result === 'in 1 day')
+      })
+
+      it('works with day in the past', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 4, 10, 30, 0),
+          new Date(1986, 3, 5, 10, 30, 0),
+
+          { numeric: 'always' }
+        )
+        assert(result === '1 day ago')
+      })
+
+      it('works with days in the future', () => {
+        const result = intlFormatDistance(
+          new Date(1987, 3, 4, 10, 30, 0),
+          new Date(1986, 3, 4, 10, 30, 0),
+          { unit: 'day' }
+        )
+        assert(result === 'in 365 days')
+      })
+
+      it('works with days in the past', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 4, 10, 30, 0),
+          new Date(1987, 3, 4, 10, 30, 0),
+
+          { unit: 'day' }
+        )
+        assert(result === '365 days ago')
+      })
+
+      it('works with weeks in the future', () => {
+        const result = intlFormatDistance(
+          new Date(1987, 3, 4, 10, 30, 0),
+          new Date(1986, 3, 4, 10, 30, 0),
+          { unit: 'week' }
+        )
+        assert(result === 'in 52 weeks')
+      })
+
+      it('works with weeks in the past', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 4, 10, 30, 0),
+          new Date(1987, 3, 4, 10, 30, 0),
+
+          { unit: 'week' }
+        )
+        assert(result === '52 weeks ago')
+      })
+
+      it('works with month in the future', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 5, 4, 10, 30, 0),
+          new Date(1986, 4, 29, 10, 30, 0),
+          { unit: 'month' }
+        )
+        assert(result === 'next month')
+      })
+
+      it('works with month in the past', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 4, 29, 10, 30, 0),
+          new Date(1986, 5, 4, 10, 30, 0),
+
+          { unit: 'month' }
+        )
+        assert(result === 'last month')
+      })
+
+      it('works with months in the future', () => {
+        const result = intlFormatDistance(
+          new Date(1987, 3, 4, 10, 30, 0),
+          new Date(1986, 3, 4, 10, 30, 0),
+          { unit: 'month' }
+        )
+        assert(result === 'in 12 months')
+      })
+
+      it('works with months in the past', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 4, 10, 30, 0),
+          new Date(1987, 3, 4, 10, 30, 0),
+
+          { unit: 'month' }
+        )
+        assert(result === '12 months ago')
+      })
+
+      it('works with quarters in the future', () => {
+        const result = intlFormatDistance(
+          new Date(1987, 3, 4, 10, 30, 0),
+          new Date(1986, 3, 4, 10, 30, 0),
+          { unit: 'quarter' }
+        )
+        assert(result === 'in 4 quarters')
+      })
+
+      it('works with quarters in the past', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 4, 10, 30, 0),
+          new Date(1987, 3, 4, 10, 30, 0),
+
+          { unit: 'quarter' }
+        )
+        assert(result === '4 quarters ago')
+      })
+
+      it('works with years in the future', () => {
+        const result = intlFormatDistance(
+          new Date(1988, 3, 4, 10, 30, 0),
+          new Date(1986, 3, 4, 10, 30, 0),
+          { unit: 'year' }
+        )
+        assert(result === 'in 2 years')
+      })
+
+      it('works with years in the past', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 4, 10, 30, 0),
+          new Date(1988, 3, 4, 10, 30, 0),
+          { unit: 'year' }
+        )
+        assert(result === '2 years ago')
+      })
+    })
+
+    describe('numeric', () => {
+      it('works with now', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 5, 10, 30, 0),
+          new Date(1986, 3, 5, 10, 30, 0),
+          { numeric: 'auto' }
+        )
+        assert(result === 'now')
+      })
+
+      it('works with seconds in the future', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 5, 10, 30, 0),
+          new Date(1986, 3, 5, 10, 30, 0),
+          { numeric: 'always' }
+        )
+        assert(result === 'in 0 seconds')
+      })
+
+      it('works with month in the future', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 5, 4, 10, 30, 0),
+          new Date(1986, 4, 4, 10, 30, 0),
+          { numeric: 'always' }
+        )
+        assert(result === 'in 1 month')
+      })
+
+      it('works with month in the past', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 4, 4, 10, 30, 0),
+          new Date(1986, 5, 4, 10, 30, 0),
+          { numeric: 'always' }
+        )
+        assert(result === '1 month ago')
+      })
+
+      it('works with quarter in the future', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 5, 4, 10, 30, 0),
+          new Date(1986, 1, 4, 10, 30, 0),
+          { numeric: 'always' }
+        )
+        assert(result === 'in 1 quarter')
+      })
+
+      it('works with quarter in the past', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 1, 4, 10, 30, 0),
+          new Date(1986, 5, 4, 10, 30, 0),
+          { numeric: 'always' }
+        )
+        assert(result === '1 quarter ago')
+      })
+
+      it('works with year in the future', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 4, 4, 10, 30, 0),
+          new Date(1985, 4, 4, 10, 30, 0),
+          { numeric: 'always' }
+        )
+        assert(result === 'in 1 year')
+      })
+
+      it('works with year in the past', () => {
+        const result = intlFormatDistance(
+          new Date(1985, 1, 4, 10, 30, 0),
+          new Date(1986, 4, 4, 10, 30, 0),
+          { numeric: 'always' }
+        )
+        assert(result === '1 year ago')
+      })
+    })
+
+    describe('locale', () => {
+      it('works with Spanish locale', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 4, 4, 10, 30, 0),
+          new Date(1985, 4, 4, 10, 30, 0),
+          { locale: 'es' }
+        )
+        assert(result === 'el próximo año')
+      })
+
+      it('works with the same dates for de-DE locale', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 5, 10, 30, 0),
+          new Date(1986, 3, 5, 10, 30, 0),
+          { locale: 'de-DE', localeMatcher: 'lookup' }
+        )
+        assert(result === 'jetzt')
+      })
+
+      it('works with seconds in the future for de-DE locale', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 5, 10, 30, 0),
+          new Date(1986, 3, 5, 10, 30, 0),
+          { locale: 'de-DE', numeric: 'always' }
+        )
+        assert(result === 'in 0 Sekunden')
+      })
+
+      it('works with minutes in the future for de locale', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 5, 11, 30, 0),
+          new Date(1986, 3, 5, 10, 30, 0),
+          { unit: 'minute', locale: 'de' }
+        )
+        assert(result === 'in 60 Minuten')
+      })
+
+      it('works with minutes in the future for es locale', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 3, 5, 11, 30, 0),
+          new Date(1986, 3, 5, 10, 30, 0),
+          { unit: 'minute', locale: 'es' }
+        )
+        assert(result === 'dentro de 60 minutos')
+      })
+
+      it('it works with ru locale', () => {
+        const result = intlFormatDistance(new Date(), new Date(), {
+          locale: 'ru',
+        })
+        assert(result === 'сейчас')
+      })
+    })
+
+    describe('edge cases', () => {
+      // falls back to { numeric: always }
+      it('works with tomorrow', () => {
+        const result = intlFormatDistance(
+          new Date(1985, 4, 5, 10, 30, 0),
+          new Date(1985, 4, 4, 10, 30, 0),
+          { style: 'short', numeric: 'auto' }
+        )
+        assert(result === 'tomorrow')
+      })
+
+      // To make CI tests pass
+      AmericanTZOnly('works with month', () => {
+        const result = intlFormatDistance(
+          new Date(1985, 5, 4, 10, 30, 0),
+          new Date(1985, 4, 4, 10, 30, 0),
+          { style: 'short', numeric: 'auto' }
+        )
+        assert(result === 'next mo')
+      })
+
+      // To make CI tests pass
+      AmericanTZOnly('works with year', () => {
+        const result = intlFormatDistance(
+          new Date(1986, 4, 5, 10, 30, 0),
+          new Date(1985, 4, 5, 10, 30, 0),
+          { style: 'short', numeric: 'auto' }
+        )
+        assert(result === 'next yr')
+      })
+
+      it('handles dates before 100 AD', () => {
+        const result = intlFormatDistance(
+          new Date(1, 3, 4, 11, 30, 0),
+          new Date(1, 3, 4, 10, 30, 0),
+          { unit: 'minute' }
+        )
+        assert(result === 'in 60 minutes')
+      })
+    })
+  })
+
+  describe('errors', () => {
+    it('checks the first date', () => {
       assert.throws(
         intlFormatDistance.bind(
           null,
@@ -480,7 +562,7 @@ describe('intlFormatDistance', () => {
       )
     })
 
-    it('throws Range Error if the base date isnt valid', () => {
+    it('checks the second date', () => {
       assert.throws(
         intlFormatDistance.bind(
           null,
@@ -491,14 +573,14 @@ describe('intlFormatDistance', () => {
       )
     })
 
-    it("throws Range Error if both dates aren't valid", () => {
+    it('checks both dates', () => {
       assert.throws(
         intlFormatDistance.bind(null, new Date(NaN), new Date(NaN)),
         RangeError
       )
     })
 
-    it('throws Range Error if unit is not valid', () => {
+    it('checks unit', () => {
       assert.throws(
         // @ts-ignore: the value doesnt match one of the Unit values from '../types.ts'
         intlFormatDistance.bind(
@@ -511,7 +593,7 @@ describe('intlFormatDistance', () => {
       )
     })
 
-    it('throws Range Error if locale is not valid', () => {
+    it('checks locale', () => {
       assert.throws(
         intlFormatDistance.bind(
           null,
@@ -523,7 +605,7 @@ describe('intlFormatDistance', () => {
       )
     })
 
-    it('throws Range Error if localeMatcher is not valid', () => {
+    it('checks localeMatcher', () => {
       assert.throws(
         // @ts-expect-error
         intlFormatDistance.bind(
@@ -536,7 +618,7 @@ describe('intlFormatDistance', () => {
       )
     })
 
-    it('throws Range Error if numeric is not valid', () => {
+    it('checks numerick', () => {
       assert.throws(
         // @ts-expect-error
         intlFormatDistance.bind(
@@ -549,7 +631,7 @@ describe('intlFormatDistance', () => {
       )
     })
 
-    it('throws Range Error if style is not valid', () => {
+    it('checks style', () => {
       assert.throws(
         // @ts-expect-error
         intlFormatDistance.bind(
@@ -560,22 +642,6 @@ describe('intlFormatDistance', () => {
         ),
         RangeError
       )
-    })
-
-    it('handles dates before 100 AD and prints out `in 60 minutes`', () => {
-      const result = intlFormatDistance(
-        new Date(1, 3, 4, 11, 30, 0),
-        new Date(1, 3, 4, 10, 30, 0),
-        { unit: 'minute' }
-      )
-      assert(result === 'in 60 minutes')
-    })
-
-    it('prints `сейчас`', () => {
-      const result = intlFormatDistance(new Date(), new Date(), {
-        locale: 'ru',
-      })
-      assert(result === 'сейчас')
     })
   })
 })
