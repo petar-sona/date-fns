@@ -1,3 +1,4 @@
+import { IntlOptionsUnit } from 'src/types'
 import {
   secondsInDay,
   secondsInHour,
@@ -18,9 +19,9 @@ import differenceInSeconds from '../differenceInSeconds/index'
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
-interface IntlFormatDistanceOptions {
-  unit?: Intl.RelativeTimeFormatUnit
-  locale?: Intl.UnicodeBCP47LocaleIdentifier
+interface Options {
+  unit?: IntlOptionsUnit
+  locale?: Intl.RelativeTimeFormatStyle
   localeMatcher?: Intl.RelativeTimeFormatLocaleMatcher
   numeric?: Intl.RelativeTimeFormatNumeric
   style?: Intl.RelativeTimeFormatStyle
@@ -207,7 +208,7 @@ interface IntlFormatDistanceOptions {
 export default function intlFormatDistance(
   date: Date | number,
   baseDate: Date | number,
-  options?: IntlFormatDistanceOptions
+  options?: Options
 ): string {
   requiredArgs(2, arguments)
 
