@@ -92,7 +92,7 @@ interface IntlFormatDistanceOptions {
  * @param {Date|Number} baseDate - the date to compare with.
  * @param {Object} [options] - an object with options.
  * @param {String} [options.unit] - formats the distance with the given unit ('year', 'quarter', 'month', 'week', 'day', 'hour', 'minute', 'second').
- * @param {String|String[]} [options.locale] - the locale to use (BCP 47 language tag). [For the reference see MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locale_identification_and_negotiation).
+ * @param {String|String[]} [options.locale] - the locale to use (BCP 47 language tag) e.g. "hi": Hindi (language) or "de-AT": German (language) as used in Austria (region).
  * @param {String} [options.localeMatcher='best fit'] - the locale matching algorithm to use. Other value: "lookup".
  * @param {String} [options.numeric='always'] - the output message format. Other value: "auto".
  * @param {String} [options.style='long'] - the length of the internationalized message. Other values: "short" or "narrow".
