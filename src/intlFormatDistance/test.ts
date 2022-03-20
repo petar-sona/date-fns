@@ -618,7 +618,7 @@ describe('intlFormatDistance', () => {
       )
     })
 
-    it('checks numerick', () => {
+    it('checks numeric', () => {
       assert.throws(
         // @ts-expect-error
         intlFormatDistance.bind(
