@@ -175,7 +175,6 @@ describe('intlFormatDistance', () => {
         const result = intlFormatDistance(
           new Date(1986, 3, 4, 10, 30, 0),
           new Date(1987, 3, 4, 10, 30, 0),
-
           { unit: 'second' }
         )
         assert(result === '31,536,000 seconds ago')
