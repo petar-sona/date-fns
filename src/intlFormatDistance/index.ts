@@ -35,7 +35,7 @@ interface Options {
  * The function calculates the difference between two given dates and either picks the most appropriate unit
  * depending on the distance (the less the distance the smaller the unit),
  * or allows a user to pass in a unit as well.
- * If a unit is passed in, it will be applied accordingly. Otherwise - see the table below:
+ * If the unit is specified, it will be applied accordingly. Otherwise - see the table below:
  *
  * |    Distance between dates   |               Result               |
  * |-----------------------------|------------------------------------|
